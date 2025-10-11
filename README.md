@@ -3,26 +3,51 @@
 ### Manual Usage
 1. Run the pre-check script to verify Python and Docker installation:
 	```bash
-	bash precheck.sh
+	bash scripts/precheck.sh
 	```
-2. Install Flask if not already installed:
+2. Install dependencies if not already installed:
 	```bash
-	pip install flask
+	pip install flask rich
 	```
-3. Start the Flask app:
+3. Collect host information:
+	```bash
+	python3 scripts/collect_host_info.py
+	```
+4. View probe data with beautiful TUI:
+	```bash
+	python3 scripts/view_probe_data.py
+	```
+5. Or start the Flask app:
 	```bash
 	python3 app.py
 	```
 
 ### Docker Usage
-1. Build the Docker image:
+1. Use the deployment script (recommended):
+	```bash
+	./scripts/deploy.sh
+	```
+   This will build, run, collect data, and save to probe_data.json
+
+2. Or manually build and run:
 	```bash
 	docker build -t prober .
-	```
-2. Run the container:
-	```bash
 	docker run -p 8080:8080 prober
 	```
+
+### Viewing Collected Data
+- **Rich TUI Interface** (recommended):
+  ```bash
+  python3 scripts/view_probe_data.py
+  ```
+- **Raw JSON**:
+  ```bash
+  cat probe_data.json
+  ```
+- **Web Interface**:
+  ```bash
+  curl http://localhost:8080/probe
+  ```
 
 ### Troubleshooting
 - If you see errors about missing Python or Docker, run the `precheck.sh` script and follow the installation instructions provided.
@@ -74,16 +99,26 @@ This information ensures the Docker stack is configured correctly and services o
 ## Dependencies
 This project requires the following dependencies:
 
+**Required:**
 - Python 3.x
 - Flask
 - Docker (for containerization)
-
 - python3-pip (for installing Python packages)
 - python3-venv (for creating virtual environments)
 
-To install Python dependencies:
+**Optional:**
+- Rich (for beautiful terminal output)
+
+To install required Python dependencies:
 ```bash
 pip install flask
+```
+
+To install optional Rich library for enhanced TUI:
+```bash
+./scripts/install_optional.sh
+# or manually:
+pip install rich
 ```
 
 To build and run the Docker container, Docker must be installed on the host.

@@ -19,7 +19,7 @@ COPY entrypoint.sh /app/entrypoint.sh
 # Make scripts executable
 RUN chmod +x /app/entrypoint.sh /app/scripts/*.sh /app/scripts/*.py
 
-# Install Python dependencies
+# Install Python dependencies (rich is optional, installed separately)
 RUN pip install --no-cache-dir flask
 
 EXPOSE 8080

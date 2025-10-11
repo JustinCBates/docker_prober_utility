@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Entrypoint script for Docker Prober Utility
 
