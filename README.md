@@ -78,6 +78,9 @@ This project requires the following dependencies:
 - Flask
 - Docker (for containerization)
 
+- python3-pip (for installing Python packages)
+- python3-venv (for creating virtual environments)
+
 To install Python dependencies:
 ```bash
 pip install flask
