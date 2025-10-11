@@ -27,6 +27,7 @@ A minimal HTTP/HTTPS backend (Python Flask) for integration testing and deployme
 
 ## Dependencies
 - Python 3.x
+- python3-pip
 - Flask
 - Docker
 
