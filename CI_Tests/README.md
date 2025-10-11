@@ -1,15 +1,8 @@
 # Unit Tests for Docker Prober Utility
 
-This directory contains comprehensive unit tests for all components of the Docker Prober Utility.
+This directory contains unit tests for **host-side scripts** only. Container-based components (Flask app) are tested through deployment and integration testing.
 
 ## Test Files
-
-- **test_app.py**: Tests for Flask application endpoints
-  - Root endpoint (`/`)
-  - Health check (`/health`)
-  - Probe data endpoint (`/probe`)
-  - Collection trigger (`/collect`)
-  - Test/validation endpoint (`/test`)
 
 - **test_collect_host_info.py**: Tests for host information collection
   - Command execution utilities
@@ -32,9 +25,6 @@ This directory contains comprehensive unit tests for all components of the Docke
 
 ### Run individual test files:
 ```bash
-# Flask app tests
-python3 -m unittest CI_Tests/test_app.py
-
 # Collection script tests
 python3 -m unittest CI_Tests/test_collect_host_info.py
 
@@ -49,25 +39,34 @@ pytest CI_Tests/ -v
 
 ### Run specific test:
 ```bash
-python3 -m unittest CI_Tests.test_app.ProberTestCase.test_health_endpoint
+python3 -m unittest CI_Tests.test_collect_host_info.TestCollectHostInfo.test_collect_host_info_network
 ```
 
 ## Test Coverage
 
 The tests cover:
-- ✅ All Flask API endpoints
-- ✅ Data collection functionality
+- ✅ Host information collection
+- ✅ Data structure validation
 - ✅ JSON file I/O operations
 - ✅ Error handling and edge cases
 - ✅ Rich TUI and plain text fallback
-- ✅ Data structure validation
+- ✅ Command execution utilities
+
+## What's NOT Tested Here
+
+- ❌ Flask app endpoints (tested in container)
+- ❌ Docker deployment (tested through deploy script)
+- ❌ Container-specific functionality
+
+These are validated through integration testing and deployment verification.
 
 ## Requirements
 
 Tests require:
 - Python 3.x
-- Flask (for app tests)
 - Standard library modules (unittest, json, etc.)
+
+**NO** Flask or container dependencies needed!
 
 Optional:
 - pytest (for enhanced test running)
@@ -75,7 +74,7 @@ Optional:
 
 ## Continuous Integration
 
-These tests are designed to run in CI/CD pipelines:
+These tests are designed to run in CI/CD pipelines without Docker:
 ```yaml
 # Example GitHub Actions
 - name: Run tests
@@ -84,9 +83,11 @@ These tests are designed to run in CI/CD pipelines:
 
 ## Adding New Tests
 
-When adding new features:
+When adding new **host-side** features:
 1. Create test cases in the appropriate test file
 2. Follow the existing pattern (setUp, test methods, tearDown)
 3. Use descriptive test method names
 4. Add assertions for expected behavior
 5. Test both success and failure cases
+
+**Note**: Only add tests for scripts that run on the host. Container tests belong elsewhere.
