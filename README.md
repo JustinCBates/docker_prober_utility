@@ -1,3 +1,32 @@
+## Usage Instructions
+
+### Manual Usage
+1. Run the pre-check script to verify Python and Docker installation:
+	```bash
+	bash precheck.sh
+	```
+2. Install Flask if not already installed:
+	```bash
+	pip install flask
+	```
+3. Start the Flask app:
+	```bash
+	python3 app.py
+	```
+
+### Docker Usage
+1. Build the Docker image:
+	```bash
+	docker build -t prober .
+	```
+2. Run the container:
+	```bash
+	docker run -p 8080:8080 prober
+	```
+
+### Troubleshooting
+- If you see errors about missing Python or Docker, run the `precheck.sh` script and follow the installation instructions provided.
+- Ensure all dependencies are installed before starting the app manually.
 # Docker Prober Utility
 
 This utility provides a minimal HTTP/HTTPS backend for integration testing and deployment validation. It is designed to be included as a submodule in other projects (e.g., openproject-docker-compose) to test proxy and server configuration before full stack deployment.
