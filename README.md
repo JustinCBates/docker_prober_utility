@@ -97,26 +97,30 @@ When configuring a Docker stack, extract the following information from the host
 This information ensures the Docker stack is configured correctly and services operate reliably.
 
 ## Dependencies
-This project requires the following dependencies:
+
+### Production (End Users)
 
 **Required:**
-- Python 3.x
-- Flask
-- Docker (for containerization)
-- python3-pip (for installing Python packages)
-- python3-venv (for creating virtual environments)
+- `python>=3.8` - Python runtime
+- `flask` - Web framework (from app.py)
 
-**Optional:**
-- Rich (for beautiful terminal output)
+**Optional Features:**
+- `requests` - HTTP requests (if probing external services)
+- `psutil` - System information (if monitoring system resources)
+- `docker` - Docker integration (if probing containers)
 
-To install required Python dependencies:
-```bash
-pip install flask
-```
+### Development (Contributors)
 
-To install optional Rich library for enhanced TUI:
-```bash
-./scripts/install_optional.sh
+**Required:**
+- `python>=3.8` - Python runtime
+- `pytest` - Testing framework
+
+**Optional Tools:**
+- `black` - Code formatting (if formatting Python code)
+- `flake8` - Code linting (if linting Python code)
+- `coverage` - Test coverage (if measuring coverage)
+
+
 # or manually:
 pip install rich
 ```
