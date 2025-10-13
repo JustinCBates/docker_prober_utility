@@ -1,0 +1,159 @@
+# Control Flow Specification - Prober
+# Design-first specification for iterative development
+# Use this to communicate probing flow changes before implementation exists
+
+component:
+  name: "prober"
+  description: "OpenProject system probing and monitoring component"
+  version: "1.0.0"
+
+entry_points:
+  app_main:
+    status: "IMPLEMENTED"
+    description: "Main Flask application entry point"
+    calls: ["probe_endpoint", "health_check", "data_collection"]
+    
+  collect_host_info:
+    status: "IMPLEMENTED"
+    description: "Host information collection process"
+    flow_id: "data_collection_flow"
+    
+  view_probe_data:
+    status: "IMPLEMENTED"
+    description: "Rich TUI data visualization process"
+    flow_id: "visualization_flow"
+    
+  probe_endpoint:
+    status: "IMPLEMENTED"
+    description: "HTTP endpoint for probe data"
+    flow_id: "api_flow"
+    
+  health_check:
+    status: "IMPLEMENTED"
+    description: "System health check endpoint"
+    flow_id: "health_flow"
+
+flows:
+  data_collection_flow:
+    description: "Primary Data Collection Process"
+    steps:
+      - step_id: "init"
+        name: "Initialize Collector"
+        status: "IMPLEMENTED"
+        description: "Set up data collection environment"
+        
+      - step_id: "system_probe"
+        name: "System Information Probe"
+        status: "IMPLEMENTED"
+        description: "Collect system metrics and information"
+        
+      - step_id: "network_probe"
+        name: "Network Configuration Probe"
+        status: "IMPLEMENTED"
+        description: "Analyze network configuration and connectivity"
+        
+      - step_id: "docker_probe"
+        name: "Docker Environment Probe"
+        status: "IMPLEMENTED"
+        description: "Examine Docker installation and configuration"
+        
+      - step_id: "data_aggregation"
+        name: "Data Aggregation"
+        status: "IMPLEMENTED"
+        description: "Aggregate and format collected data"
+
+  visualization_flow:
+    description: "Data Visualization Process"
+    steps:
+      - step_id: "data_load"
+        name: "Load Probe Data"
+        status: "IMPLEMENTED"
+        description: "Load collected probe data"
+        
+      - step_id: "tui_setup"
+        name: "TUI Interface Setup"
+        status: "IMPLEMENTED"
+        description: "Initialize rich TUI interface"
+        
+      - step_id: "data_display"
+        name: "Display Data"
+        status: "IMPLEMENTED"
+        description: "Present data in interactive format"
+        
+      - step_id: "user_interaction"
+        name: "Handle User Interaction"
+        status: "IMPLEMENTED"
+        description: "Process user navigation and commands"
+
+  api_flow:
+    description: "HTTP API Data Serving"
+    steps:
+      - step_id: "request_validation"
+        name: "Validate Request"
+        status: "IMPLEMENTED"
+        description: "Validate incoming API requests"
+        
+      - step_id: "data_retrieval"
+        name: "Retrieve Data"
+        status: "IMPLEMENTED"
+        description: "Fetch requested probe data"
+        
+      - step_id: "response_formatting"
+        name: "Format Response"
+        status: "IMPLEMENTED"
+        description: "Format data for API response"
+
+  health_flow:
+    description: "System Health Check"
+    steps:
+      - step_id: "service_check"
+        name: "Check Service Status"
+        status: "IMPLEMENTED"
+        description: "Verify prober service is running"
+        
+      - step_id: "data_freshness"
+        name: "Check Data Freshness"
+        status: "IMPLEMENTED"
+        description: "Verify probe data is recent"
+        
+      - step_id: "connectivity_check"
+        name: "Check Connectivity"
+        status: "IMPLEMENTED"
+        description: "Test network connectivity"
+
+artifacts:
+  probe_data:
+    description: "Collected system probe data"
+    format: "JSON"
+    
+  system_metrics:
+    description: "System performance and configuration metrics"
+    format: "JSON"
+    
+  network_info:
+    description: "Network configuration and connectivity data"
+    format: "JSON"
+    
+  docker_info:
+    description: "Docker environment and container information"
+    format: "JSON"
+    
+  health_status:
+    description: "Current system health status"
+    format: "JSON"
+
+decision_points:
+  probe_depth:
+    description: "Level of detail for system probing"
+    options: ["basic", "detailed", "comprehensive"]
+    default: "detailed"
+    
+  data_persistence:
+    description: "Whether to persist collected data"
+    options: ["memory_only", "file_cache", "database"]
+    default: "file_cache"
+
+implementation_status:
+  overall: "IMPLEMENTED"
+  last_updated: "2025-10-13"
+  notes: "Core probing and visualization functionality fully implemented"
