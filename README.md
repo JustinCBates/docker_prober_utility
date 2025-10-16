@@ -1,3 +1,19 @@
+# Docker Prober Utility
+
+> ⚠️ **EXPERIMENTAL - NOT INTEGRATED**  
+> This utility is a standalone tool that is **NOT currently integrated** with config-manager or deploy-manager.  
+> It can run independently for system discovery and health checks, but integration is **NOT IMPLEMENTED**.  
+> See [BACKLOG.md](BACKLOG.md) for planned integration features.
+
+## Current Status
+
+- ✅ **Standalone Mode**: Fully functional as independent Flask service
+- ✅ **Host Discovery**: Can collect system information and Docker details
+- ✅ **Health Endpoints**: HTTP/HTTPS endpoints for monitoring
+- ❌ **config-manager Integration**: NOT IMPLEMENTED (planned)
+- ❌ **deploy-manager Integration**: NOT IMPLEMENTED (planned)
+- ❌ **Package Distribution**: Experimental, not production-ready
+
 ## Usage Instructions
 
 ### Manual Usage
